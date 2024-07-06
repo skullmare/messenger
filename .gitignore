@@ -5,4 +5,4 @@
 /backend/messenger/user/__pycache__
 /backend/messenger/user/migrations
 /backend/messenger/messenger/__pycache__
-/frontend/node_modules
+/frontend/messenger/node_modules
