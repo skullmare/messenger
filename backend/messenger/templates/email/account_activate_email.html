@@ -1,0 +1,19 @@
+{% load i18n %}
+
+{% block subject %}
+{% blocktrans %}Активация аккаунта на {{ site_name }}{% endblocktrans %}
+{% endblock subject %}
+
+{% block text_body %}
+{% blocktrans %} Для активации вашего аккаунта на {{ site_name }}.{% endblocktrans %}
+{% trans "нажмите на ссылку ниже:" %}
+{{ protocol }}://{{ domain }}/{{ url|safe }}
+{% trans "Спасибо что пользуетесь нашим сайтом!" %}
+{% endblock text_body %}
+
+{% block html_body %}
+<p>{% blocktrans %} Для активации вашего аккаунта на {{ site_name }}.{% endblocktrans %}</p>
+<p>{% trans "нажмите на ссылку ниже:" %}</p>
+<p><a href="{{ protocol }}://{{ domain }}/{{ url|safe }}">{{ protocol }}://{{ domain }}/{{ url|safe }}</a></p>
+<p>{% trans "Спасибо что пользуетесь нашим сайтом!" %}</p>
+{% endblock html_body %}
