@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import datetime
+import datetime, os
 from decouple import config
 
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'chat',
     'rest_framework',
     'djoser',
+    'corsheaders',
 ]
 
 AUTH_USER_MODEL = 'user.CustomUser'
@@ -56,6 +57,31 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000", 
+    "http://127.0.0.1:3000",  
+]
+
+if DEBUG:
+    CORS_ALLOW_ALL_ORIGINS = True
+    
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+CORS_ALLOW_HEADERS = [
+    'Accept',
+    'Authorization',
+    'Content-Type',
 ]
 
 ROOT_URLCONF = 'messenger.urls'
@@ -122,7 +148,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -160,7 +186,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 seconds = 300
 if DEBUG:
-    seconds = 36000
+    seconds = 360000
 
 DJOSER = {
     'USER_ID_FIELD': 'email', #1
@@ -203,3 +229,6 @@ SIMPLE_JWT = {
     'USER_ID_CLAIM': 'user_id',
     'ROTATE_REFRESH_TOKENS': True,
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
