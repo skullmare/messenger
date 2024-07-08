@@ -1,8 +1,9 @@
 .env
+db.sqlite3
 /backend/venv
 /backend/messenger/chat/__pycache__
 /backend/messenger/chat/migrations
 /backend/messenger/user/__pycache__
 /backend/messenger/user/migrations
 /backend/messenger/messenger/__pycache__
-/backend/messenger/media/files/
+/backend/messenger/media/files

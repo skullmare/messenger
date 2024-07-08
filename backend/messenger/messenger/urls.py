@@ -31,6 +31,7 @@ urlpatterns = [
     path('api/v1/messages/<int:pk>/', MessageDetailView.as_view(), name='message-detail'),
     path('password_reset/<uid>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('activate/<uid>/<token>/', ActivationView.as_view(), name='activate'),
+    path('api/v1/', include('social_django.urls', namespace='social')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
